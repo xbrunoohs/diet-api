@@ -76,15 +76,3 @@ A API estará disponível em `http://localhost:3000`.
 ## Demonstração
 
 Você pode testar a API utilizando ferramentas como [Postman](https://www.postman.com/) ou [Insomnia](https://insomnia.rest/).
-
-## Contribuição
-
-Sinta-se à vontade para contribuir! Faça um fork do repositório e envie um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a MIT License.
-
----
-
-Sinta-se à vontade para ajustar qualquer parte do texto conforme necessário! Se precisar de mais alguma coisa, é só avisar.
