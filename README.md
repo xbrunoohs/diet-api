@@ -1,49 +1,53 @@
 # Diet API
 
-Uma API desenvolvida em Node.js usando Prisma para a criação e gestão de usuários e suas refeições. A API permite operações de CRUD para usuários e refeições.
+Este projeto é uma API para a gestão de usuários e suas refeições, desenvolvida em Node.js utilizando Prisma e SQLite.
 
 ## Tecnologias Utilizadas
 
 - Node.js
 - Express
 - Prisma
-- MySQL (ou outro banco de dados suportado)
+- SQLite
 
-## Instalação
+## Pré-requisitos
 
-1. **Clone o repositório**
+- Node.js instalado
+- NPM (Node Package Manager)
+
+## Configuração do Ambiente
+
+1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/seu_usuario/api-receitas.git
-   cd api-receitas
+   git clone <URL_DO_REPOSITORIO>
+   cd diet-api
    ```
 
-2. **Instale as dependências**
+2. **Instale as dependências:**
    ```bash
    npm install
    ```
 
-3. **Configuração do Banco de Dados**
-   - Crie um banco de dados no MySQL.
-   - Atualize o arquivo **.env** com a URL de conexão:
-     ```
-     DATABASE_URL="mysql://USER:PASSWORD@localhost:3306/your_database"
-     ```
-
-4. **Inicialize o Prisma**
-   ```bash
-   npx prisma migrate dev --name init
-   npx prisma generate
+3. **Configuração do Prisma:**
+   - Abra o arquivo `schema.prisma` e verifique se a configuração do SQLite está assim:
+   ```prisma
+   datasource db {
+     provider = "sqlite"
+     url      = "file:./dev.db"  // O arquivo dev.db será criado na raiz do projeto
+   }
    ```
 
-## Execução
+4. **Crie o banco de dados:**
+   ```bash
+   npx prisma migrate dev --name init
+   ```
 
-Para iniciar a API, execute o seguinte comando:
+## Executando o Projeto
 
-```bash
-node server.js
-```
-
-A API estará disponível em `http://localhost:3000`.
+1. **Inicie o servidor:**
+   ```bash
+   node server.js
+   ```
+   O servidor estará rodando em `http://localhost:3000`.
 
 ## Endpoints
 
@@ -51,28 +55,74 @@ A API estará disponível em `http://localhost:3000`.
 
 - **Criar Usuário**
   - `POST /api/users`
-  - **Corpo da requisição**:
+  - **Body:**
     ```json
     {
-      "username": "string",
-      "password": "string"
+      "username": "usuario1",
+      "password": "senha123"
     }
     ```
+
+- **Listar Usuários**
+  - `GET /api/users`
+
+- **Obter Usuário por ID**
+  - `GET /api/users/:id`
+
+- **Atualizar Usuário**
+  - `PUT /api/users/:id`
+  - **Body:**
+    ```json
+    {
+      "username": "usuario_atualizado",
+      "password": "nova_senha"
+    }
+    ```
+
+- **Deletar Usuário**
+  - `DELETE /api/users/:id`
 
 ### Refeições
 
 - **Criar Refeição**
   - `POST /api/meals`
-  - **Corpo da requisição**:
+  - **Body:**
     ```json
     {
-      "userId": "integer",
-      "name": "string",
-      "description": "string",
+      "userId": 1,
+      "name": "Almoço",
+      "description": "Salada e Frango grelhado",
       "inDiet": true
     }
     ```
 
-## Demonstração
+- **Listar Refeições**
+  - `GET /api/meals`
 
-Você pode testar a API utilizando ferramentas como [Postman](https://www.postman.com/) ou [Insomnia](https://insomnia.rest/).
+- **Obter Refeição por ID**
+  - `GET /api/meals/:id`
+
+- **Atualizar Refeição**
+  - `PUT /api/meals/:id`
+  - **Body:**
+    ```json
+    {
+      "userId": 1,
+      "name": "Almoço Atualizado",
+      "description": "Salada e Peixe grelhado",
+      "inDiet": false
+    }
+    ```
+
+- **Deletar Refeição**
+  - `DELETE /api/meals/:id`
+
+## Testando a API
+
+Você pode testar a API utilizando ferramentas como Postman ou Insomnia. Certifique-se de enviar as requisições para `http://localhost:3000`.
+
+### Exemplos de Teste com Postman/Insomnia
+
+- **Criar Usuário:** Envie uma requisição `POST` para `/api/users` com o body apropriado.
+- **Listar Usuários:** Envie uma requisição `GET` para `/api/users`.
+- **Criar Refeição:** Envie uma requisição `POST` para `/api/meals` com o body apropriado.
