@@ -2,6 +2,9 @@
 
 Este projeto é uma API para a gestão de usuários e suas refeições, desenvolvida em Node.js utilizando Prisma e SQLite.
 
+### Desenvolvido por
+Bruno Henrique Souza e Gabriel Maciel de Oliveira
+
 ## Tecnologias
 
 - Node.js
