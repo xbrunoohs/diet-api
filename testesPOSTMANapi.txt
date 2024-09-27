@@ -1,0 +1,162 @@
+Teste CRUD no postman
+
+USERS
+
+   Create:
+
+      Método: POST
+
+         Teste 1:
+            URL: localhost:3000/api/users/
+            Body raw: 
+               {
+                  "username": "usuario1",
+                  "password": "senha123"
+               }
+         Teste 2.
+            URL: localhost:3000/api/users/
+            Body raw: 
+               {
+                  "username": "usuario2",
+                  "password": "senhasenha"
+               }
+         Teste 3.
+            URL: localhost:3000/api/users/
+            Body raw:
+               {
+                  "username": "usuario3",
+                  "password": "seilatmj"
+               }
+
+   Retrieve:
+
+      Método: GET
+
+         Teste 1:
+            URL: localhost:3000/api/users/
+            Body raw: (vazio)
+
+         Teste 2:
+            URL: localhost:3000/api/users/1
+            Body raw: (vazio)
+
+         Teste 3:
+            URL: localhost:3000/api/users/2
+            Body raw: (vazio)
+
+   Update:
+
+      Método: PUT
+
+         Teste 1:
+            URL: localhost:3000/api/users/1
+            Body raw:
+               {
+                  "username": "novoNome",
+                  "password": "novaSenha"
+               }
+         Teste 2:
+            URL: localhost:3000/api/users/2
+            Body raw:
+               {
+                  "username": "novoNome2",
+                  "password": "novaSenha2"
+               }
+
+         Mostrar os updates:
+            Método: GET
+               URL: localhost:3000/api/users/
+               Body raw: (vazio)
+
+   Delete:
+      
+      Método: DELETE
+
+         Teste 1:
+            URL: localhost:3000/api/users/3
+            Body raw: (vazio)
+
+         Mostrar os deletes:
+            Método: GET
+               URL: localhost:3000/api/users/
+               Body raw: (vazio)
+
+--------------------------------------------------------------------------------
+
+MEALS
+
+   Create:
+
+      Método: POST
+
+         Teste 1:
+            URL: localhost:3000/api/meals/
+            Body raw: 
+               {
+                 "userId": 1,
+                 "name": "Hamburgasso",
+                 "description": "Dois hambúrgueres, alface, queijo, molho especial, cebola e picles num pão com gergelim",
+                 "inDiet": false
+               }
+         Teste 2.
+            URL: localhost:3000/api/meals/
+            Body raw: 
+               {
+                 "userId": 2,
+                 "name": "Dogão fit",
+                 "description": "Sem pão, sem salsicha, sem batata palha, sem maionese, sem ketchup, sem mostarda",
+                 "inDiet": true
+               }
+
+   Retrieve:
+
+      Método: GET
+
+         Teste 1:
+            URL: localhost:3000/api/meals/
+            Body raw: (vazio)
+
+         Teste 2:
+            URL: localhost:3000/api/meals/1
+            Body raw: (vazio)
+
+   Update:
+
+      Método: PUT
+
+         Teste 1:
+            URL: localhost:3000/api/meals/1
+            Body raw:
+               {
+                 "userId": 1,
+                 "name": "Hamburguin",
+                 "description": "Meio hambúrguer, alface, cebola e picles sem pão nem gergelim",
+                 "inDiet": true
+               }
+         Teste 2:
+            URL: localhost:3000/api/meals/2
+            Body raw:
+               {
+                 "userId": 2,
+                 "name": "Dogão fit mas nem tanto",
+                 "description": "Sem pão, com salsicha, sem batata palha, com maionese, sem ketchup, sem mostarda",
+                 "inDiet": false
+               }
+
+         Mostrar os updates:
+            Método: GET
+               URL: localhost:3000/api/meals/
+               Body raw: (vazio)
+
+   Delete:
+      
+      Método: DELETE
+
+         Teste 1:
+            URL: localhost:3000/api/meals/1
+            Body raw: (vazio)
+
+         Mostrar os deletes:
+            Método: GET
+               URL: localhost:3000/api/meals/
+               Body raw: (vazio)

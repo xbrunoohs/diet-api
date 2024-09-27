@@ -1,9 +1,9 @@
-const { prisma } = require('../prismaClient'); // Caminho correto
+const { prisma } = require('../prismaClient');
 
 exports.createUser = async (req, res) => {
-  const { username, password } = req.body;
+  const {username, password} = req.body;
 
-  // Verifica se username e password estão definidos
+  // Verifica o username e password
   if (!username || !password) {
     return res.status(400).json({ error: "Username and password are required." });
   }
@@ -11,12 +11,13 @@ exports.createUser = async (req, res) => {
   try {
     const user = await prisma.user.create({
       data: {
-        username: username, // Passa o valor de username corretamente
-        password: password,  // Passa o valor de password corretamente
+        username: username,
+        password: password, 
       },
     });
 
-    res.status(201).json(user); // Retorna o usuário criado
+  // Retorna o usuário criado
+    res.status(201).json(user); 
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred while creating the user." });
@@ -29,16 +30,16 @@ exports.getUsers = async (req, res) => {
     res.status(200).json(users);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "An error occurred while retrieving users." });
+    res.status(500).json({error: "An error occurred while retrieving users."});
   }
 };
 
 exports.getUserById = async (req, res) => {
-  const { id } = req.params;
+  const {id} = req.params;
 
   try {
     const user = await prisma.user.findUnique({
-      where: { id: Number(id) },
+      where: {id: Number(id)},
     });
 
     if (!user) {
@@ -53,12 +54,12 @@ exports.getUserById = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-  const { id } = req.params;
-  const { username, password } = req.body;
+  const {id} = req.params;
+  const {username, password} = req.body;
 
   try {
     const user = await prisma.user.update({
-      where: { id: Number(id) },
+      where: {id: Number(id)},
       data: {
         username,
         password,
@@ -73,14 +74,14 @@ exports.updateUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-  const { id } = req.params;
+  const {id} = req.params;
 
   try {
     await prisma.user.delete({
-      where: { id: Number(id) },
+      where: {id: Number(id)},
     });
 
-    res.status(204).send(); // 204 No Content
+    res.status(204).send();
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred while deleting the user." });

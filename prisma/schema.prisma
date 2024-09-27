@@ -6,9 +6,8 @@
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"  // Caminho para o arquivo do banco de dados
+  url      = "file:./dev.db" 
 }
-
 
 generator client {
   provider = "prisma-client-js"

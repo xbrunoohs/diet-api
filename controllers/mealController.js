@@ -2,8 +2,8 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 exports.createMeal = async (req, res) => {
-  const { userId, name, description, inDiet } = req.body;
-  const meal = await prisma.meal.create({ data: { userId, name, description, inDiet } });
+  const {userId, name, description, inDiet} = req.body;
+  const meal = await prisma.meal.create({data: {userId, name, description, inDiet}});
   res.status(201).json(meal);
 };
 
@@ -13,27 +13,27 @@ exports.getMeals = async (req, res) => {
 };
 
 exports.getMealById = async (req, res) => {
-  const { id } = req.params;
-  const meal = await prisma.meal.findUnique({ where: { id: parseInt(id) } });
+  const {id} = req.params;
+  const meal = await prisma.meal.findUnique({where: {id: parseInt(id)}});
   if (meal) {
     res.json(meal);
   } else {
-    res.status(404).json({ message: 'Refeição não encontrada' });
+    res.status(404).json({ mensagem: 'Refeição não encontrada' });
   }
 };
 
 exports.updateMeal = async (req, res) => {
-  const { id } = req.params;
-  const { userId, name, description, inDiet } = req.body;
+  const {id} = req.params;
+  const {userId, name, description, inDiet} = req.body;
   const meal = await prisma.meal.update({
-    where: { id: parseInt(id) },
-    data: { userId, name, description, inDiet }
+    where: {id: parseInt(id)},
+    data: {userId, name, description, inDiet}
   });
   res.json(meal);
 };
 
 exports.deleteMeal = async (req, res) => {
-  const { id } = req.params;
-  await prisma.meal.delete({ where: { id: parseInt(id) } });
+  const {id} = req.params;
+  await prisma.meal.delete({where: { id: parseInt(id)}});
   res.status(204).send();
 };

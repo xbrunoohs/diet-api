@@ -1,4 +1,4 @@
-# Diet API
+# inDiet API
 
 Este projeto é uma API para a gestão de usuários e suas refeições, desenvolvida em Node.js utilizando Prisma e SQLite.
 
@@ -19,7 +19,7 @@ Este projeto é uma API para a gestão de usuários e suas refeições, desenvol
 1. **Clone o repositório:**
    ```bash
    git clone <URL_DO_REPOSITORIO>
-   cd diet-api
+   cd inDiet-api
    ```
 
 2. **Instale as dependências:**
